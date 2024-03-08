@@ -1,3 +1,5 @@
+# fruta-ios-native-app-test-automation
+
 I created this project to demonstrate working knowledge of multiple tools:
 1. WebDriverIO
 2. Appium
