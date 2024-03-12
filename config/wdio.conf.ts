@@ -21,7 +21,7 @@ export const config: WebdriverIO.Config = {
         ]
     ],
 
-    specs: ['../tests/specs/**/fruits.menu.spec.ts'],
+    specs: ['../tests/specs/**.spec.ts'],
 
     capabilities: [
         {

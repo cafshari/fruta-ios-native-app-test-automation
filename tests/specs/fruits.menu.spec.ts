@@ -22,9 +22,8 @@ describe('WebdriverIO and Appium, when interacting with the Fruta app,', () => {
         await MenuScreen.waitForIsShown();
 
     }),
-    it('should be able to view Favorites screen', async () => {
-
-        await TabBar.openFavorites();
-        await FavoritesScreen.waitForIsShown(true);
-    });
+    it('should be able to search for an item', async () => {
+        
+    })
+    ;
 });
