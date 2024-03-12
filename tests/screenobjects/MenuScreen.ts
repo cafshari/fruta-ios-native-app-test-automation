@@ -11,16 +11,17 @@ class MenuScreen extends AppScreen {
     }
 
     get screen () {return $(SELECTORS.SCREEN);}
-    private get searchField () {return $('~Search');}
+    get searchField () {return $('~Search');}
     private get firstItem () {return $('-ios class chain:**/XCUIElementTypeCollectionView[`name == "Sidebar"`]/XCUIElementTypeCell[1]');}
+    get berry_searchResults () {return $$('-ios class chain:**/XCUIElementTypeButton[`name CONTAINS "berry" AND visible == 1`]');}
 
     async tapOnFirstItem(){
         await this.firstItem.click();
     }
 
-    async tapOnSearchField(){
-        await this.searchField.click();
-    }
+    // async tapOnSearchField(){
+    //     await this.searchField.click();
+    // }
 
 }
 

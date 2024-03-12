@@ -23,7 +23,17 @@ describe('WebdriverIO and Appium, when interacting with the Fruta app,', () => {
 
     }),
     it('should be able to search for an item', async () => {
-        
+        await TabBar.openMenu();
+        await MenuScreen.waitForIsShown(true);
+        await MenuScreen.searchField.setValue("berry");
+
+        const berry_searchResults = await MenuScreen.berry_searchResults;
+        await expect(berry_searchResults).toBeElementsArrayOfSize(3);   //Blueberry, Raspberry, Strawberry (results will not change)
+
+        await berry_searchResults.forEach(async result => {
+            await expect(result).toHaveAttribute('name', expect.stringContaining('berry'));
+
+        });
     })
     ;
 });
