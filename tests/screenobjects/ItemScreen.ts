@@ -14,6 +14,8 @@ class ItemScreen extends AppScreen {
     get addToFavorites () {return $('~Add to Favorites');}
     get removeFromFavorites () {return $('~Remove from Favorites');}
     get returnToMenuButton () {return $('-ios class chain:**/XCUIElementTypeButton[`name == "Menu"`][2]');}
+    get ingredientsHeader () {return $('~Ingredients');}
+    get ingredient_Results () {return $$('-ios predicate string:type == "XCUIElementTypeButton" AND name CONTAINS "Ingredient"');}
 
     async addItemToFavorites(){
         await this.addToFavorites.click();
@@ -22,6 +24,7 @@ class ItemScreen extends AppScreen {
     async returnToMenu() {
         await this.returnToMenuButton.click();
     }
+    
 }
 
 export default new ItemScreen();

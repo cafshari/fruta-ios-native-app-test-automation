@@ -3,12 +3,13 @@ import { join } from 'node:path';
 export const config: WebdriverIO.Config = {
     logLevel: 'debug',
     bail: 0,
-    waitforTimeout: 30000,
+    waitforTimeout: 5000,
     framework: 'mocha',
     reporters: ['spec'],
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000,
+       //grep: 'should be able to view ingredients of an item', //can run a specific test here
     },
     services: [
         [

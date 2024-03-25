@@ -1,11 +1,12 @@
 import TabBar from '../screenobjects/components/TabBar.js';
 import MenuScreen from '../screenobjects/MenuScreen.js';
-import FavoritesScreen from '../screenobjects/FavoritesScreen.js';
 import ItemScreen from '../screenobjects/ItemScreen.js';
+import Gestures, { DIRECTIONS } from '../helpers/Gestures.js';
 
 describe('WebdriverIO and Appium, when interacting with the Fruta app,', () => {
-    beforeEach(async () => {
-        console.log('inside beforeEach (doing nothing, just for demonstration)');
+    beforeEach('restart app', async () => {
+        await driver.execute('mobile: terminateApp', {'bundleId': 'com.example.apple-samplecode.fruta'});
+        await driver.execute('mobile: launchApp', {'bundleId': 'com.example.apple-samplecode.fruta'});
     });
 
     it('should be able to view Menu screen', async () => {
@@ -34,6 +35,20 @@ describe('WebdriverIO and Appium, when interacting with the Fruta app,', () => {
             await expect(result).toHaveAttribute('name', expect.stringContaining('berry'));
 
         });
+    }),
+    it('should be able to view ingredients of an item', async () => {
+        await TabBar.openMenu();
+        await MenuScreen.waitForIsShown(true);
+        await MenuScreen.tapOnFirstItem();
+        await Gestures.swipe(DIRECTIONS.DOWN);
+        
+        const ingredients = await ItemScreen.ingredient_Results;
+        await ingredients.forEach(async (ingredient, index) => {
+            let ing = await ingredient.getAttribute('name');
+            console.log(`ingredient ${index}: ${ing}`); //print the list of ingredients in order to potentially reveal anything abnormal
+        });
+        
+        await expect(ingredients).toBeElementsArrayOfSize({ gte: 2 });  //every item has at least 2 ingredients
     })
     ;
 });
