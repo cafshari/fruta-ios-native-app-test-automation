@@ -10,11 +10,11 @@ describe('WebdriverIO and Appium, when interacting with the Fruta app,', () => {
     });
 
     it('should be able to view Menu screen', async () => {
-        await TabBar.openMenu();
+        //await TabBar.openMenu();
         await MenuScreen.waitForIsShown(true);
     }),
     it('should be able to add an item as a favorite', async () => {
-        await TabBar.openMenu();
+        //await TabBar.openMenu();
         await MenuScreen.waitForIsShown(true);
         await MenuScreen.tapOnFirstItem();
         await ItemScreen.addItemToFavorites();
@@ -24,7 +24,7 @@ describe('WebdriverIO and Appium, when interacting with the Fruta app,', () => {
 
     }),
     it('should be able to search for an item', async () => {
-        await TabBar.openMenu();
+        //await TabBar.openMenu();
         await MenuScreen.waitForIsShown(true);
         await MenuScreen.searchField.setValue("berry");
 
@@ -37,7 +37,7 @@ describe('WebdriverIO and Appium, when interacting with the Fruta app,', () => {
         });
     }),
     it('should be able to view ingredients of an item', async () => {
-        await TabBar.openMenu();
+        //await TabBar.openMenu();
         await MenuScreen.waitForIsShown(true);
         await MenuScreen.tapOnFirstItem();
         await Gestures.swipe(DIRECTIONS.DOWN);
