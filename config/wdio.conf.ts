@@ -9,7 +9,7 @@ export const config: WebdriverIO.Config = {
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000,
-       //grep: 'should be able to view ingredients of an item', //can run a specific test here
+       //grep: 'should be able to order an item', //can run a specific test here
     },
     services: [
         [

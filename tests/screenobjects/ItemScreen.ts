@@ -16,15 +16,22 @@ class ItemScreen extends AppScreen {
     get returnToMenuButton () {return $('-ios class chain:**/XCUIElementTypeButton[`name == "Menu"`][2]');}
     get ingredientsHeader () {return $('~Ingredients');}
     get ingredient_Results () {return $$('-ios predicate string:type == "XCUIElementTypeButton" AND name CONTAINS "Ingredient"');}
+    get buyWithApplePay () {return $('~Buy with Apple Pay');}
+    get thankYouForOrder_message () {return $('~THANK YOU FOR YOUR ORDER!');}    //check for visibility
+    get smoothieReady_message () {return $('~YOUR SMOOTHIE IS READY!');}    //check for visibility
 
     async addItemToFavorites(){
         await this.addToFavorites.click();
     }
 
+    async buyItem(){
+        await this.buyWithApplePay.click();
+    }
+
     async returnToMenu() {
         await this.returnToMenuButton.click();
     }
-    
+
 }
 
 export default new ItemScreen();

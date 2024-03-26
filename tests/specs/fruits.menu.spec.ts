@@ -50,5 +50,17 @@ describe('WebdriverIO and Appium, when interacting with the Fruta app,', () => {
         
         await expect(ingredients).toBeElementsArrayOfSize({ gte: 2 });  //every item has at least 2 ingredients
     })
+    it('should be able to order an item', async () => {
+
+        await MenuScreen.waitForIsShown(true);
+        await MenuScreen.tapOnFirstItem();
+        await ItemScreen.buyItem();
+
+        expect(await ItemScreen.thankYouForOrder_message).toBeDisplayed();
+        
+        //'YOUR SMOOTHIE IS READY!' message appears automatically after 5 seconds. 
+        //we'll wait 10 seconds and keep checking every 2.5
+        await expect(await ItemScreen.smoothieReady_message).toBeDisplayed({'wait': 10000, 'interval': 2500});
+    })
     ;
 });
